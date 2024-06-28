@@ -36,6 +36,7 @@ namespace SSC {
         .index = this->bridge.client.index
       },
       .index = options.index,
+      .conduit = this->core->conduit.port,
       .userScript = options.userScript
     });
 
