@@ -98,9 +98,9 @@ namespace SSC::IPC {
       JSON::Object::Entries {
         {"argv", JSON::Array {}},
         {"client", JSON::Object {}},
+        {"conduit", this->options.conduit},
         {"config", JSON::Object {}},
         {"debug", this->options.debug},
-        {"conduit", this->options.conduit},
         {"headless", this->options.headless},
         {"env", JSON::Object {}},
         {"index", this->options.index}
@@ -116,7 +116,7 @@ namespace SSC::IPC {
       for (const auto &entry : this->metadata) {
         if (entry.second.size() == 0) {
           continue;
-	}
+	      }
 
         buffers.push_back(tmpl(
           R"HTML(<meta name="{{name}}" content="{{content}}">)HTML",
@@ -175,6 +175,12 @@ namespace SSC::IPC {
               writable: false,
               value: {}
             },
+            conduit: {
+              configurable: false,
+              enumerable: true,
+              writable: false,
+              value: {{conduit}}
+            },
             config: {
               configurable: false,
               enumerable: true,
@@ -209,6 +215,7 @@ namespace SSC::IPC {
         )JAVASCRIPT",
         Map {
           {"argv", args["argv"].str()},
+          {"conduit", args["conduit"].str()},
           {"debug", args["debug"].str()},
           {"headless", args["headless"].str()},
           {"index", args["index"].str()},
