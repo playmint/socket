@@ -1302,6 +1302,8 @@ export class Peer {
     this._onDebug(`<- ON SYNC (from=${address}:${port}, local=${local.hash.slice(0, 8)}, remote=${remote.hash.slice(0, 8)} remote-buckets=${remoteBuckets})`)
 
     for (let i = 0; i < local.buckets.length; i++) {
+          continue //--------------------------------- HACKY SKIP
+
       //
       // nothing to send/sync, expect peer to send everything they have
       //
@@ -1311,7 +1313,9 @@ export class Peer {
       // you dont have any of these, im going to send them to you
       //
       if (!remote.buckets[i]) {
+
         for (const [key, p] of this.cache.data.entries()) {
+
           if (!key.startsWith(local.prefix + i.toString(16))) continue
 
           const packet = Packet.from(p)
