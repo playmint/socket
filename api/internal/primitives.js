@@ -224,7 +224,7 @@ export function init () {
       URLSearchParams,
 
       // Promise
-      Promise,
+      //Promise,
 
       // fetch
       fetch,
@@ -261,12 +261,12 @@ export function init () {
       ServiceWorker,
 
       // timers
-      setTimeout,
-      setInterval,
-      setImmediate,
-      clearTimeout,
-      clearInterval,
-      clearImmediate,
+      //setTimeout,
+      //setInterval,
+      //setImmediate,
+      //clearTimeout,
+      //clearInterval,
+      //clearImmediate,
 
       // streams
       ReadableStream,
