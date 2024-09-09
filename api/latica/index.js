@@ -1211,6 +1211,7 @@ export class Peer {
     peer.port = port
     peer.natType = natType
     peer.address = address
+    //peer.clusters ??= {}; // feels wrong
 
     if (proxy) peer.proxy = proxy
     if (socket) peer.socket = socket
@@ -1232,9 +1233,10 @@ export class Peer {
       `subclusterId=${scid.slice(0, 6)})`
     )
 
-    if (this.onJoin && this.clusters[cid]) {
-      this.onJoin(packet, peer, port, address)
-    }
+      // THIS ONE CAUSES WRONG PEERS IN THE SUBCLUSTER LIST
+    //if (this.onJoin && this.clusters[cid]) {
+    //  this.onJoin(packet, peer, port, address)
+    //}
 
     if (firstContact && this.onConnection) {
       this.onConnection(packet, peer, port, address)
@@ -1250,7 +1252,7 @@ export class Peer {
       // spamming them and getting rate-limited.
       //
       if (!this.syncs[key]) {
-        this.syncs[key] = now - Packet.ttl
+        this.syncs[key] = now - 1000
         first = true
       }
 
@@ -1900,6 +1902,7 @@ export class Peer {
       `address=${address}:${port})`
     )
 
+      // THIS ONE DOESN"T RESULT IN PEERS SHOWING UP IN THE CONNECTED SET?
     if (this.onJoin && this.clusters[cid]) {
       this.onJoin(packet, peer, port, address)
     }
