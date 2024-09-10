@@ -1234,9 +1234,9 @@ export class Peer {
     )
 
       // THIS ONE CAUSES WRONG PEERS IN THE SUBCLUSTER LIST
-    //if (this.onJoin && this.clusters[cid]) {
-    //  this.onJoin(packet, peer, port, address)
-    //}
+    if (this.onJoin && this.clusters[cid]) {
+      this.onJoin(packet, peer, port, address)
+    }
 
     if (firstContact && this.onConnection) {
       this.onConnection(packet, peer, port, address)
