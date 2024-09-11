@@ -549,7 +549,7 @@ MAIN {
   }
 
   if (isDebugEnabled()) {
-    app.userConfig["build_name"] += "-dev";
+    app.userConfig["build_name"] += "dev";
   }
 
   app.userConfig["build_name"] += suffix;

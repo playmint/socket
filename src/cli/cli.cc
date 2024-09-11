@@ -2191,7 +2191,7 @@ int main (int argc, char* argv[]) {
 
           // internal
           if (flagDebugMode) {
-            suffix += "-dev";
+            suffix += "dev";
           }
 
           if (settings["meta_application_protocol"].size() == 0) {
