@@ -12,21 +12,21 @@ const platform = {
   GlobalPostMessage: postMessage
 }
 
-BroadcastChannel.prototype.postMessage = function (message, ...args) {
-  return platform.BroadcastChannelPostMessage.call(
-    this,
-    handlePostMessage(message),
-    ...args
-  )
-}
+// BroadcastChannel.prototype.postMessage = function (message, ...args) {
+//   return platform.BroadcastChannelPostMessage.call(
+//     this,
+//     handlePostMessage(message),
+//     ...args
+//   )
+// }
 
-MessagePort.prototype.postMessage = function (message, ...args) {
-  return platform.MessagePortPostMessage.call(
-    this,
-    handlePostMessage(message),
-    ...args
-  )
-}
+// MessagePort.prototype.postMessage = function (message, ...args) {
+//   return platform.MessagePortPostMessage.call(
+//     this,
+//     handlePostMessage(message),
+//     ...args
+//   )
+// }
 
 globalThis.postMessage = function (message, ...args) {
   return platform.GlobalPostMessage.call(
