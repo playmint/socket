@@ -5105,7 +5105,7 @@ int main (int argc, char* argv[]) {
         : "name=" + settings["ios_simulator_device"];
 
       String destination = flagBuildForSimulator
-        ? "platform=iOS Simulator,OS=latest," + deviceIdentity + ",arch=x86_64"
+        ? "platform=iOS Simulator,OS=latest," + deviceIdentity
         : "generic/platform=iOS";
 
       String deviceType;
@@ -5125,7 +5125,7 @@ int main (int argc, char* argv[]) {
         << " build " << args
         << " -allowProvisioningUpdates"
         << " -scheme " << settings["build_name"]
-        << " -destination '" << destination << "'"
+        << " -destination '" << destination << "' ARCHS=x86_64"
         << " -configuration " << configuration;
 
       if (flagShouldPackage) {
