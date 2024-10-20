@@ -4110,7 +4110,9 @@ int main (int argc, char* argv[]) {
 
         auto pathToInstalledProfile = Path(Env::get("HOME")) /
           "Library" /
-          "MobileDevice" /
+          "Developer" /
+          "Xcode" /
+          "UserData" /
           "Provisioning Profiles" /
           (uuid + ".mobileprovision");
 
@@ -5108,6 +5110,10 @@ int main (int argc, char* argv[]) {
         ? "platform=iOS Simulator,OS=latest," + deviceIdentity
         : "generic/platform=iOS";
 
+	  String archs = flagBuildForSimulator
+		? " ARCHS=x86_64"
+		: "";
+
       String deviceType;
 
       // TODO: should be "iPhone Distribution: <name/provisioning specifier>"?
@@ -5125,7 +5131,7 @@ int main (int argc, char* argv[]) {
         << " build " << args
         << " -allowProvisioningUpdates"
         << " -scheme " << settings["build_name"]
-        << " -destination '" << destination << "' ARCHS=x86_64"
+        << " -destination '" << destination << "'" + archs
         << " -configuration " << configuration;
 
       if (flagShouldPackage) {
