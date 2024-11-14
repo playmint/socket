@@ -2912,11 +2912,49 @@ int main (int argc, char* argv[]) {
         const String size = pair[0];
         const String scale = pair[1];
 
+        // HACK: Using the size to get the idiom as it's not always 'iphone'
+        auto getIdiom = [&]() {
+          if (isForDesktop) {
+            return "mac";
+          }
+
+          // The switch statement in C++ only works with integral or enumeration types, not strings.
+          if (size == "1024") {
+              return "ios-marketing";
+          } else if (size == "76") {
+              return "ipad";
+          } else if (size == "167") {
+              return "ipad";
+          } else {
+              return "iphone";
+          }
+        };
+
+        auto getRealSize = [&]() {
+          if (size == "167") {
+            String realSize = "83.5";
+            return realSize;
+          }
+          return size;
+        };
+
+        auto getRealScale = [&]() {
+          if (size == "167") {
+            String realScale = "2x";
+            return realScale;
+          }
+          return scale;
+        };
+
+        String idiom = getIdiom();
+        String realSize = getRealSize();
+        String realScale = getRealScale();
+
         images.push(JSON::Object::Entries {
-          { "size", size + "x" + size },
-          { "idiom", isForDesktop ? "mac" : size == "1024" ? "ios-marketing" : "iphone" },
+          { "size", realSize + "x" + realSize },
+          { "idiom", idiom },
           { "filename", "Icon-" + size + "x" + size + "@" + scale + ".png" },
-          { "scale", scale }
+          { "scale", realScale }
         });
 
         types.push_back(std::make_tuple(stoi(pair[0]), stoi(pair[1])));
