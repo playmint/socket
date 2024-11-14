@@ -2914,7 +2914,7 @@ int main (int argc, char* argv[]) {
 
         images.push(JSON::Object::Entries {
           { "size", size + "x" + size },
-          { "idiom", isForDesktop ? "mac" : "iphone" },
+          { "idiom", isForDesktop ? "mac" : size == "1024" ? "ios-marketing" : "iphone" },
           { "filename", "Icon-" + size + "x" + size + "@" + scale + ".png" },
           { "scale", scale }
         });
