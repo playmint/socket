@@ -1320,6 +1320,11 @@ constexpr auto gIOSInfoPList = R"XML(<?xml version="1.0" encoding="UTF-8"?>
   <key>UIApplicationSupportsIndirectInputEvents</key>
   <true/>
 
+  <key>BGTaskSchedulerPermittedIdentifiers</key>
+  <array>
+      <string>{{meta_bundle_identifier}}</string>
+  </array>
+
   <!-- User given plist data -->
 {{ios_info_plist_data}}
 </dict>
