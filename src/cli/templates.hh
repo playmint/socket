@@ -1051,7 +1051,7 @@ constexpr auto gXCodeProject = R"ASCII(// !$*UTF8*$!
         CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/socket.entitlements";
         CODE_SIGN_IDENTITY = "{{ios_codesign_identity}}";
         CODE_SIGN_STYLE = Manual;
-        CURRENT_PROJECT_VERSION = 1;
+        CURRENT_PROJECT_VERSION = {{meta_version}};
         DEVELOPMENT_TEAM = "{{apple_team_identifier}}";
         ENABLE_BITCODE = NO;
         GENERATE_INFOPLIST_FILE = YES;
@@ -1069,7 +1069,7 @@ constexpr auto gXCodeProject = R"ASCII(// !$*UTF8*$!
           "@executable_path/../Frameworks",
         );
         LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
-        MARKETING_VERSION = 1.0;
+        MARKETING_VERSION = {{meta_version}};
         ONLY_ACTIVE_ARCH = YES;
         OTHER_CFLAGS = (
           "-DHOST=\\\"{{host}}\\\"",
@@ -1096,7 +1096,7 @@ constexpr auto gXCodeProject = R"ASCII(// !$*UTF8*$!
         CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/socket.entitlements";
         CODE_SIGN_IDENTITY = "iPhone Distribution";
         CODE_SIGN_STYLE = Manual;
-        CURRENT_PROJECT_VERSION = 1;
+        CURRENT_PROJECT_VERSION = {{meta_version}};
         DEVELOPMENT_TEAM = "{{apple_team_identifier}}";
         ENABLE_BITCODE = NO;
         GENERATE_INFOPLIST_FILE = YES;
@@ -1114,7 +1114,7 @@ constexpr auto gXCodeProject = R"ASCII(// !$*UTF8*$!
           "@executable_path/../Frameworks",
         );
         LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
-        MARKETING_VERSION = 1.0;
+        MARKETING_VERSION = {{meta_version}};
         ONLY_ACTIVE_ARCH = YES;
         PRODUCT_BUNDLE_IDENTIFIER = "{{meta_bundle_identifier}}";
         PRODUCT_NAME = "$(TARGET_NAME)";
