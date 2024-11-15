@@ -94,9 +94,14 @@ const tmp = new Uint32Array(2)
  * Generate a random 64-bit number.
  * @returns {BigInt} - A random 64-bit number.
  */
-export function rand64 () {
-  getRandomValues(tmp)
-  return (BigInt(tmp[0]) << 32n) | BigInt(tmp[1])
+export function rand64() {
+  try {
+    getRandomValues(tmp);
+  } catch (e) {
+    return 0n;
+  }
+
+  return (BigInt(tmp[0]) << 32n) | BigInt(tmp[1]);
 }
 
 /**
