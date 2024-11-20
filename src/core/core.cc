@@ -83,7 +83,7 @@ namespace SSC {
     }
 
   #if !SOCKET_RUNTIME_PLATFORM_ANDROID
-    this->pauseEventLoop();
+    // this->pauseEventLoop();
   #endif
   }
 
