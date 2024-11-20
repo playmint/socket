@@ -383,14 +383,14 @@ namespace SSC::IPC {
   void SchemeHandlers::configure (const Configuration& configuration) {
     static const auto devHost = SSC::getDevHost();
     this->configuration = configuration;
-  #if SOCKET_RUNTIME_PLATFORM_APPLE
-    if (SSC::isDebugEnabled() && devHost.starts_with("http:")) {
-      [configuration.webview.processPool
-        performSelector: @selector(_registerURLSchemeAsSecure:)
-        withObject: @"http"
-      ];
-    }
-  #endif
+  // #if SOCKET_RUNTIME_PLATFORM_APPLE
+  //   if (SSC::isDebugEnabled() && devHost.starts_with("http:")) {
+  //     [configuration.webview.processPool
+  //       performSelector: @selector(_registerURLSchemeAsSecure:)
+  //       withObject: @"http"
+  //     ];
+  //   }
+  // #endif
   }
 
   bool SchemeHandlers::hasHandlerForScheme (const String& scheme) {
